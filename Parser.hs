@@ -1,5 +1,9 @@
 module Parser where
 
+-- Following Prof. Graham Hutton's parser combinator library
+-- References:
+--  https://youtu.be/dDtZLm7HIJs
+
 import Data.Char
 import Control.Applicative
 
