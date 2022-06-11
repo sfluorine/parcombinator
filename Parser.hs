@@ -43,9 +43,11 @@ parserFail error = Parser (\_ -> Left error)
 
 -- Running parser
 
+-- Return value with the rest of the string
 parse :: Parser a -> String -> Either Error (String, a)
 parse (Parser p) input = p input
 
+-- Return just the value
 runParser :: Parser a -> String -> Either Error a
 runParser p input = do
   (rest, val) <- parse p input
