@@ -1,4 +1,4 @@
-- Example
+## Example
 
 ```haskell
 import Parser
