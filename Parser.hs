@@ -4,6 +4,7 @@ module Parser (module Parser, module Control.Applicative) where
 -- References:
 --  https://youtu.be/dDtZLm7HIJs
 
+import Data.Char
 import Control.Applicative
 
 type Error = String
@@ -25,6 +26,19 @@ satisfy p = do
 
 char :: Char -> Parser Char
 char x = satisfy (==x)
+
+string :: String -> Parser String
+string [] = return []
+string (x:xs) = do
+  char x
+  string xs
+  return $ x:xs
+
+digit :: Parser Char
+digit = satisfy isDigit
+
+number :: Parser String
+number = many digit
 
 space :: Parser ()
 space = do
